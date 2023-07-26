@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 
-now = Time.now.to_i
-
-if ARGV.length != 1 then
-	puts "Usage: #{$0} 'name-of-post'"
-	exit 1
+if ARGV.empty?
+    puts "usage: #{$0} name of the post to create"
+    exit 1
 end
 
-`touch #{now}_#{ARGV.last}.md`
+`touch #{Time.now.to_i}-#{ARGV.map(&:downcase).join('-')}`
